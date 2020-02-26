@@ -1,19 +1,14 @@
-import {createConnection} from 'typeorm';
+import {TypeOrmModuleOptions} from "@nestjs/typeorm";
 
-export const databaseProviders = [
-    {
-        provide: 'DATABASE_CONNECTION',
-        useFactory: async () => await createConnection({
-            type: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            username: 'postgres',
-            password: 'password',
-            database: 'todoto',
-            entities: [
-                __dirname + '/../**/*.entity{.ts,.js}',
-            ],
-            synchronize: true,
-        }),
-    },
-];
+export const databaseProviders: TypeOrmModuleOptions = {
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
+    password: 'password',
+    database: 'todoto',
+    entities: [
+        __dirname + '/../**/*.entity{.ts,.js}',
+    ],
+    synchronize: true,
+}
